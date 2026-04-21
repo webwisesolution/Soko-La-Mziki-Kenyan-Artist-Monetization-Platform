@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Soko La Mziki | Kenyan Artist Monetization Platform</title>
+  <!-- Tailwind CSS + Font Awesome + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: #fef9f0;
+    }
+    .kenya-pattern {
+      background: linear-gradient(135deg, #f5f0e6 0%, #fef9f0 100%);
+    }
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+    }
+    .mpesa-badge {
+      background: #00b84310;
+      border-left: 3px solid #00b843;
+    }
+    .btn-mpesa {
+      transition: all 0.2s;
+    }
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body class="kenya-pattern text-gray-800">
+
+  <!-- ================= NAVIGATION ================= -->
+  <nav class="bg-white shadow-md sticky top-0 z-30 border-b border-amber-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-drumstick-bite text-3xl text-green-600"></i>
+          <span class="font-bold text-2xl tracking-tight text-gray-800">Soko<span class="text-green-600">LaMziki</span></span>
+          <span class="hidden md:inline-block ml-2 text-xs font-medium bg-red-100 text-red-700 px-2 py-0.5 rounded-full">🇰🇪 Kenyan artists first</span>
+        </div>
+        <div class="hidden md:flex space-x-6 font-medium">
+          <a href="#artists" class="hover:text-green-600 transition">Artists</a>
+          <a href="#music" class="hover:text-green-600 transition">Music Store</a>
+          <a href="#events" class="hover:text-green-600 transition">Events</a>
+          <a href="#membership" class="hover:text-green-600 transition">Fan Club</a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-mobile-alt text-green-600 text-xl"></i>
+          <span class="text-sm font-medium hidden sm:inline">M-Pesa powered</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative overflow-hidden bg-gradient-to-r from-green-50 via-amber-50 to-green-50 py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-sm mb-6">
+        <i class="fas fa-check-circle text-green-600 text-sm"></i>
+        <span class="text-sm font-medium">Direct-to-fan · Kenyan owned · Zero gatekeepers</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 max-w-4xl mx-auto leading-tight">
+        Sell music, get tips via <span class="text-green-600">M-Pesa</span>, book events & fan subscriptions
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-6">Empowering Kenyan artists to earn directly from fans — no middlemen. From Nairobi to Kisumu, Mombasa to Eldoret.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <a href="#music" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition flex items-center gap-2"><i class="fas fa-headphones"></i> Buy music now</a>
+        <a href="#artists" class="bg-white border border-green-200 hover:border-green-400 text-gray-800 px-6 py-3 rounded-xl font-semibold transition flex items-center gap-2"><i class="fas fa-heart"></i> Tip an artist</a>
+      </div>
+      <div class="mt-8 flex justify-center gap-6 text-sm text-gray-500">
+        <span><i class="fas fa-music text-green-500"></i> 200+ tracks</span>
+        <span><i class="fas fa-calendar-alt text-green-500"></i> Live events</span>
+        <span><i class="fas fa-users text-green-500"></i> Subscriptions</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- ================= ARTISTS + TIP & SUBSCRIPTIONS ================= -->
+    <div id="artists" class="mb-20 scroll-mt-20">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">🇰🇪 Featured Kenyan Artists</h2>
+          <p class="text-gray-500 mt-2">Tip directly via M-Pesa or subscribe to support their journey</p>
+        </div>
+        <div class="mt-2 md:mt-0 bg-amber-50 px-4 py-2 rounded-full text-sm"><i class="fas fa-hand-holding-heart text-amber-600"></i> 100% goes to artist (minus transaction)</div>
+      </div>
+      <div id="artists-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+
+    <!-- ================= MUSIC STORE (SELL MUSIC DIRECTLY) ================= -->
+    <div id="music" class="mb-20 scroll-mt-20">
+      <div class="mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">🎵 Sell music directly to fans</h2>
+        <p class="text-gray-500">High-quality singles & EPs — buy once, own forever. Instant M-Pesa payment.</p>
+      </div>
+      <div id="tracks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+
+    <!-- ================= EVENT BOOKINGS ================= -->
+    <div id="events" class="mb-20 scroll-mt-20">
+      <div class="mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">📅 Live event bookings</h2>
+        <p class="text-gray-500">Secure your spot at Kenya's hottest shows. Book tickets via M-Pesa.</p>
+      </div>
+      <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+
+    <!-- ================= FAN MEMBERSHIP / SUBSCRIPTION (PLATFORM) ================= -->
+    <div id="membership" class="mb-20 scroll-mt-20 bg-white rounded-2xl shadow-xl overflow-hidden border border-green-100">
+      <div class="grid md:grid-cols-2 gap-0">
+        <div class="p-8 md:p-10 bg-gradient-to-br from-green-50 to-white">
+          <div class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-4"><i class="fas fa-star"></i> EXCLUSIVE FAN CLUB</div>
+          <h3 class="text-3xl font-bold text-gray-800">Soko La Mziki <span class="text-green-600">Supreme</span></h3>
+          <p class="text-gray-600 mt-3">Unlock early access to music, exclusive behind-the-scenes, private WhatsApp group with artists & monthly digital meetups.</p>
+          <div class="mt-6 space-y-3">
+            <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-600"></i><span>Stream new tracks 2 days early</span></div>
+            <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-600"></i><span>20% off event tickets</span></div>
+            <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-600"></i><span>Exclusive artist AMAs (Ask Me Anything)</span></div>
+            <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-600"></i><span>Monthly merch giveaways</span></div>
+          </div>
+        </div>
+        <div class="p-8 md:p-10 bg-white flex flex-col justify-center items-center text-center border-l border-green-100">
+          <div class="mb-4"><i class="fas fa-gem text-5xl text-green-500"></i></div>
+          <div class="text-4xl font-black text-gray-800">KES 499 <span class="text-base font-normal text-gray-500">/ month</span></div>
+          <p class="text-sm text-gray-500 mt-2">Cancel anytime · M-Pesa recurring</p>
+          <button id="platformMembershipBtn" class="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition flex items-center justify-center gap-2"><i class="fas fa-ticket-alt"></i> Join Fan Membership</button>
+          <p class="text-xs text-gray-400 mt-4">First payment via M-Pesa STK push (demo simulation)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-amber-200 pt-10 pb-6 text-center text-gray-500 text-sm">
+      <div class="flex flex-wrap justify-center gap-4 mb-4">
+        <span class="inline-flex items-center gap-1"><i class="fab fa-safaricom text-green-600"></i> M-Pesa integration</span>
+        <span>🇰🇪 Made for Kenyan creatives</span>
+        <span><i class="far fa-clock"></i> Demo platform — real potential</span>
+      </div>
+      <p>© 2025 Soko La Mziki — Empowering Kenyan artists to earn directly. Tip, buy music, book shows, subscribe.</p>
+    </footer>
+  </main>
+
+  <!-- MODAL ROOT (dynamic M-Pesa payment modal) -->
+  <div id="mpesaModalRoot" class="fixed inset-0 z-50 hidden items-center justify-center p-4 transition-all" style="background: rgba(0,0,0,0.6); backdrop-filter: blur(3px);">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl transform transition-all overflow-hidden">
+      <div class="bg-green-50 px-6 py-4 border-b border-green-100 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="fab fa-safaricom text-green-700 text-xl"></i>
+          <h3 class="text-xl font-bold text-gray-800">M-Pesa Payment</h3>
+        </div>
+        <button id="closeMpesaModalBtn" class="text-gray-500 hover:text-gray-700 text-2xl leading-5">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <p id="mpesaDescription" class="text-sm font-medium text-gray-600">Description</p>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Amount (KES)</label>
+          <input type="number" id="mpesaAmountInput" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-green-500 focus:border-green-500" step="1" min="1">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">M-Pesa Phone Number</label>
+          <div class="flex">
+            <span class="inline-flex items-center px-3 bg-gray-100 border border-r-0 border-gray-300 rounded-l-lg text-gray-600">+254</span>
+            <input type="tel" id="mpesaPhoneInput" class="flex-1 border border-gray-300 rounded-r-lg px-4 py-2 focus:ring-green-500 focus:border-green-500" placeholder="712 345 678">
+          </div>
+          <p class="text-xs text-gray-400 mt-1">Test: any number (demo simulation)</p>
+        </div>
+        <button id="confirmMpesaPayBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-2"><i class="fas fa-arrow-right"></i> Pay via M-Pesa</button>
+        <p class="text-center text-xs text-gray-400">You'll receive an STK Push on your phone (simulated)</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- DATA (Kenyan Artists, Music, Events) ----------
+    const artists = [
+      { id: 1, name: "Sauti Sol", genre: "Afro-pop / RnB", subscriptionPrice: 350, imageIcon: "fa-microphone-alt", tipDefault: 100 },
+      { id: 2, name: "Nyashinski", genre: "Hip-hop / Rap", subscriptionPrice: 300, imageIcon: "fa-headphones", tipDefault: 100 },
+      { id: 3, name: "Nikita Kering", genre: "R&B / Soul", subscriptionPrice: 400, imageIcon: "fa-saxophone", tipDefault: 100 },
+      { id: 4, name: "Mejja", genre: "Gengetone / Rap", subscriptionPrice: 250, imageIcon: "fa-drum", tipDefault: 100 }
+    ];
+
+    const tracks = [
+      { id: 101, title: "Suzanna", artist: "Sauti Sol", price: 200, coverIcon: "fa-music" },
+      { id: 102, title: "Free", artist: "Nyashinski", price: 150, coverIcon: "fa-microphone" },
+      { id: 103, title: "Ex", artist: "Nikita Kering", price: 180, coverIcon: "fa-heart" },
+      { id: 104, title: "Wamlambez", artist: "Sailors ft. Mejja", price: 120, coverIcon: "fa-dance" }
+    ];
+
+    const events = [
+      { id: 201, name: "Sauti Sol - The Live Experience", venue: "Uhuru Gardens, Nairobi", date: "Dec 15, 2025", price: 1500 },
+      { id: 202, name: "Nyashinski: The Lucky You Tour", venue: "Fort Jesus, Mombasa", date: "Dec 20, 2025", price: 1200 },
+      { id: 203, name: "Nikita Kering Acoustic Set", venue: "Kisumu Lake Resort", date: "Jan 10, 2026", price: 1000 }
+    ];
+
+    // ---------- GLOBAL M-PESA MODAL SIMULATION ----------
+    let currentMpesaCallback = null;
+    let currentAmountReadonly = false;
+    const modalRoot = document.getElementById('mpesaModalRoot');
+    const mpesaDescriptionSpan = document.getElementById('mpesaDescription');
+    const mpesaAmountInput = document.getElementById('mpesaAmountInput');
+    const mpesaPhoneInput = document.getElementById('mpesaPhoneInput');
+    const confirmBtn = document.getElementById('confirmMpesaPayBtn');
+    const closeModalBtn = document.getElementById('closeMpesaModalBtn');
+
+    function closeModal() {
+      modalRoot.classList.add('hidden');
+      modalRoot.classList.remove('flex');
+      currentMpesaCallback = null;
+    }
+
+    function showMpesaPayment({ description, amount, isEditable = true, onSuccess }) {
+      // Reset fields
+      mpesaDescriptionSpan.innerText = description;
+      mpesaAmountInput.value = amount;
+      mpesaAmountInput.readOnly = !isEditable;
+      if (!isEditable) {
+        mpesaAmountInput.classList.add('bg-gray-100', 'cursor-not-allowed');
+      } else {
+        mpesaAmountInput.classList.remove('bg-gray-100', 'cursor-not-allowed');
+      }
+      mpesaPhoneInput.value = '712345678';
+      currentMpesaCallback = onSuccess;
+      modalRoot.classList.remove('hidden');
+      modalRoot.classList.add('flex');
+    }
+
+    // Simulate M-Pesa STK push
+    function simulateMpesaPayment(phone, amount, description, onSuccess) {
+      // Simple validation: phone length approx 9 digits (after +254)
+      const rawPhone = phone.replace(/\D/g, '');
+      if (rawPhone.length < 9) {
+        alert("❌ Please enter a valid phone number (e.g., 712345678)");
+        return false;
+      }
+      // Show loading simulation
+      confirmBtn.disabled = true;
+      confirmBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Processing STK Push...';
+      setTimeout(() => {
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Pay via M-Pesa';
+        // Simulate successful transaction
+        const transactionId = 'MP' + Math.random().toString(36).substring(2, 10).toUpperCase();
+        alert(`✅ M-Pesa payment successful!\n\n${description}\nAmount: KES ${amount}\nPhone: +254${rawPhone}\nTransaction ID: ${transactionId}\nReceipt sent via SMS.`);
+        if (onSuccess && typeof onSuccess === 'function') onSuccess();
+        closeModal();
+      }, 1500);
+      return true;
+    }
+
+    confirmBtn.onclick = () => {
+      let amountVal = parseFloat(mpesaAmountInput.value);
+      if (isNaN(amountVal) || amountVal <= 0) {
+        alert("Please enter a valid amount (KES)");
+        return;
+      }
+      let phoneVal = mpesaPhoneInput.value.trim();
+      if (!phoneVal) phoneVal = '712345678';
+      const description = mpesaDescriptionSpan.innerText;
+      simulateMpesaPayment(phoneVal, amountVal, description, () => {
+        if (currentMpesaCallback) currentMpesaCallback(amountVal);
+      });
+    };
+
+    closeModalBtn.onclick = closeModal;
+    modalRoot.addEventListener('click', (e) => {
+      if (e.target === modalRoot) closeModal();
+    });
+
+    // Helper functions for actions
+    function tipArtist(artistName, defaultAmount = 100) {
+      showMpesaPayment({
+        description: `💚 Tip for ${artistName} (Kenyan artist)`,
+        amount: defaultAmount,
+        isEditable: true,
+        onSuccess: (paidAmount) => {
+          alert(`🎉 You tipped ${artistName} KES ${paidAmount}! Artist receives directly. Asante sana!`);
+        }
+      });
+    }
+
+    function subscribeToArtist(artistName, price) {
+      showMpesaPayment({
+        description: `⭐ Monthly subscription to ${artistName} (KES ${price}/month)`,
+        amount: price,
+        isEditable: false,
+        onSuccess: () => {
+          alert(`🤝 You are now subscribed to ${artistName}! You'll get exclusive content and updates every month.`);
+        }
+      });
+    }
+
+    function buyTrack(trackName, artistName, price) {
+      showMpesaPayment({
+        description: `🎵 Purchase track: "${trackName}" by ${artistName}`,
+        amount: price,
+        isEditable: false,
+        onSuccess: () => {
+          alert(`✅ You own "${trackName}" by ${artistName}! Check your email for high-quality MP3 download.`);
+        }
+      });
+    }
+
+    function bookEvent(eventName, pricePerTicket) {
+      let ticketQty = prompt(`🎟️ Book tickets for: ${eventName}\nPrice per ticket: KES ${pricePerTicket}\nEnter number of tickets (max 10):`, "1");
+      if (ticketQty === null) return;
+      let qty = parseInt(ticketQty);
+      if (isNaN(qty) || qty < 1) {
+        alert("Please enter a valid number of tickets.");
+        return;
+      }
+      if (qty > 10) {
+        alert("Maximum 10 tickets per transaction.");
+        return;
+      }
+      const total = qty * pricePerTicket;
+      showMpesaPayment({
+        description: `🎫 ${qty} ticket(s) for ${eventName} | Total: KES ${total}`,
+        amount: total,
+        isEditable: false,
+        onSuccess: () => {
+          alert(`🎉 Booking confirmed! ${qty} ticket(s) for ${eventName}. E-tickets sent to your phone. Karibu sana!`);
+        }
+      });
+    }
+
+    function platformMembership() {
+      showMpesaPayment({
+        description: "👑 Soko La Mziki Supreme Fan Membership (Monthly)",
+        amount: 499,
+        isEditable: false,
+        onSuccess: () => {
+          alert("🎊 Welcome to the Supreme Fan Club! Unlock early music, exclusive meetups & discounts.");
+        }
+      });
+    }
+
+    // ---------- RENDER DYNAMIC SECTIONS ----------
+    function renderArtists() {
+      const container = document.getElementById('artists-grid');
+      container.innerHTML = artists.map(artist => `
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 card-hover transition-all">
+          <div class="h-32 bg-gradient-to-r from-green-700 to-amber-600 flex items-center justify-center">
+            <i class="fas ${artist.imageIcon || 'fa-user-circle'} text-5xl text-white opacity-90"></i>
+          </div>
+          <div class="p-5">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-xl font-bold text-gray-800">${artist.name}</h3>
+                <p class="text-sm text-green-600">${artist.genre}</p>
+              </div>
+              <i class="fas fa-check-circle text-green-500 text-sm"></i>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button data-artist-tip='${artist.name}' data-default-tip="${artist.tipDefault}" class="tip-artist-btn flex-1 bg-amber-50 hover:bg-amber-100 text-amber-700 font-medium py-2 rounded-xl text-sm transition flex items-center justify-center gap-1"><i class="fab fa-safaricom"></i> Tip M-Pesa</button>
+              <button data-artist-sub='${artist.name}' data-price='${artist.subscriptionPrice}' class="sub-artist-btn flex-1 bg-green-50 hover:bg-green-100 text-green-700 font-medium py-2 rounded-xl text-sm transition flex items-center justify-center gap-1"><i class="fas fa-calendar-check"></i> Subscribe KES ${artist.subscriptionPrice}</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // attach event listeners
+      document.querySelectorAll('.tip-artist-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const artistName = btn.getAttribute('data-artist-tip');
+          const defaultTip = parseInt(btn.getAttribute('data-default-tip')) || 100;
+          tipArtist(artistName, defaultTip);
+        });
+      });
+      document.querySelectorAll('.sub-artist-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const artistName = btn.getAttribute('data-artist-sub');
+          const price = parseInt(btn.getAttribute('data-price'));
+          subscribeToArtist(artistName, price);
+        });
+      });
+    }
+
+    function renderTracks() {
+      const container = document.getElementById('tracks-grid');
+      container.innerHTML = tracks.map(track => `
+        <div class="bg-white rounded-xl shadow-md p-5 border border-gray-100 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center"><i class="fas ${track.coverIcon} text-green-600 text-xl"></i></div>
+            <div><h4 class="font-bold text-gray-800">${track.title}</h4><p class="text-xs text-gray-500">${track.artist}</p></div>
+          </div>
+          <div class="flex justify-between items-center mt-3">
+            <span class="text-lg font-bold text-green-700">KES ${track.price}</span>
+            <button data-track-name="${track.title}" data-track-artist="${track.artist}" data-track-price="${track.price}" class="buy-track-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-1"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+          </div>
+        </div>
+      `).join('');
+      document.querySelectorAll('.buy-track-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const trackName = btn.getAttribute('data-track-name');
+          const artistName = btn.getAttribute('data-track-artist');
+          const price = parseInt(btn.getAttribute('data-track-price'));
+          buyTrack(trackName, artistName, price);
+        });
+      });
+    }
+
+    function renderEvents() {
+      const container = document.getElementById('events-grid');
+      container.innerHTML = events.map(event => `
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 card-hover">
+          <div class="p-5">
+            <div class="flex justify-between items-start">
+              <div><i class="fas fa-calendar-alt text-green-600 mr-2"></i><span class="text-sm font-medium">${event.date}</span></div>
+              <span class="bg-red-50 text-red-600 text-xs px-2 py-1 rounded-full">Limited seats</span>
+            </div>
+            <h3 class="text-xl font-bold mt-2">${event.name}</h3>
+            <p class="text-gray-500 text-sm mt-1"><i class="fas fa-map-marker-alt"></i> ${event.venue}</p>
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-2xl font-black text-gray-800">KES ${event.price}</span>
+              <button data-event-name="${event.name}" data-event-price="${event.price}" class="book-event-btn bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-1"><i class="fas fa-ticket-alt"></i> Book Tickets</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      document.querySelectorAll('.book-event-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const eventName = btn.getAttribute('data-event-name');
+          const price = parseInt(btn.getAttribute('data-event-price'));
+          bookEvent(eventName, price);
+        });
+      });
+    }
+
+    // Platform membership button
+    document.getElementById('platformMembershipBtn').addEventListener('click', platformMembership);
+
+    // Initialize render
+    renderArtists();
+    renderTracks();
+    renderEvents();
+
+    // Extra small features: add tooltips, smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#" || href === "") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+  <!-- inline additional style for better interactivity -->
+  <style>
+    ::selection {
+      background: #dcfce7;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+    .card-hover {
+      transition: all 0.25s ease;
+    }
+    .rounded-2xl, .rounded-xl {
+      transition: box-shadow 0.2s;
+    }
+  </style>
+</body>
+</html>
